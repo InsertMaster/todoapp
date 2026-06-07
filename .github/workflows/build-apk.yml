@@ -3,7 +3,7 @@ name: Build Android APK
 on:
   push:
     branches: [main]
-  workflow_dispatch: # 允许手动触发
+  workflow_dispatch:
 
 jobs:
   build:
@@ -41,8 +41,9 @@ jobs:
         working-directory: android
         run: ./gradlew assembleDebug
 
-      - name: 上传 APK
+      - name: 上传 APK（直接下载）
         uses: actions/upload-artifact@v4
         with:
-          name: techo-todo-apk
+          name: 江湖任务录.apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
+          compression-level: 0
