@@ -1,0 +1,55 @@
+.date-stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 2px solid var(--stamp-red);
+  color: var(--stamp-red);
+  font-family: "PingFang SC", "Hiragino Sans GB", "STKaiti", "KaiTi", "Noto Serif SC", serif;
+  flex-shrink: 0;
+  background: rgba(196, 58, 49, 0.06);
+  box-shadow: 0 0 12px rgba(196, 58, 49, 0.2);
+  position: relative;
+}
+
+/* 方形印章 + 缺角 = 唐代官印风格 */
+.date-stamp::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 1px solid rgba(196, 58, 49, 0.3);
+  clip-path: polygon(3px 0, 100% 0, 100% 3px, 100% 100%, calc(100% - 3px) 100%, 0 100%, 0 calc(100% - 3px), 0 0);
+}
+
+.date-stamp .stamp-month {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.date-stamp .stamp-day {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.date-stamp .stamp-weekday {
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 768px) {
+  .date-stamp {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 50px;
+    height: 50px;
+  }
+  .date-stamp .stamp-day {
+    font-size: 1.1rem;
+  }
+}

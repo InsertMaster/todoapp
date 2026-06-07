@@ -1,0 +1,181 @@
+.add-task-form {
+  background: var(--paper-light);
+  border: 1px solid var(--grid);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  transition: all 0.25s var(--ease);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+/* 顶部金色装饰 */
+.add-task-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.5), transparent);
+}
+
+.add-task-form:focus-within {
+  border-color: var(--stamp-gold);
+  box-shadow: var(--shadow-md), 0 0 20px rgba(212, 168, 83, 0.1);
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-row.main-row {
+  margin-bottom: 10px;
+}
+
+.add-task-form input,
+.add-task-form select,
+.add-task-form textarea {
+  padding: 9px 12px;
+  border: 1px solid var(--grid);
+  border-radius: var(--radius);
+  background: var(--paper-dark);
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s var(--ease);
+}
+
+.add-task-form input:focus,
+.add-task-form select:focus,
+.add-task-form textarea:focus {
+  border-color: var(--stamp-gold);
+  box-shadow: 0 0 6px rgba(212, 168, 83, 0.15);
+}
+
+.add-task-form input[name="title"] {
+  flex: 2;
+  min-width: 180px;
+  font-size: 0.95rem;
+}
+
+.add-task-form input[name="dueDate"] {
+  flex: 0 0 140px;
+  min-width: 120px;
+}
+
+.add-task-form select[name="priority"] {
+  flex: 0 0 100px;
+  min-width: 80px;
+}
+
+.add-task-form select[name="category"] {
+  flex: 0 0 120px;
+  min-width: 100px;
+}
+
+.form-row.extra-row {
+  display: none;
+}
+
+.form-row.extra-row.show {
+  display: flex;
+}
+
+.add-task-form textarea {
+  flex: 1;
+  min-width: 200px;
+  resize: vertical;
+  min-height: 36px;
+  max-height: 80px;
+}
+
+.toggle-extra {
+  color: var(--ink-light);
+  font-size: 0.78rem;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+.toggle-extra:hover {
+  color: var(--stamp-gold);
+}
+
+.toggle-extra .arrow {
+  transition: transform 0.25s var(--ease);
+  display: inline-block;
+  font-size: 0.65rem;
+}
+
+.toggle-extra .arrow.open {
+  transform: rotate(180deg);
+}
+
+/* AI Decompose Button */
+.btn-ai {
+  flex: 0 0 auto;
+  padding: 9px 16px;
+  border: 1px solid var(--stamp-purple);
+  border-radius: 3px;
+  background: rgba(123, 94, 138, 0.12);
+  color: #b89cc8;
+  font-size: 0.82rem;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: all 0.2s var(--ease);
+  font-weight: 500;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
+}
+
+.btn-ai:hover:not(:disabled) {
+  background: rgba(123, 94, 138, 0.22);
+  border-color: #b89cc8;
+  box-shadow: 0 0 12px rgba(123, 94, 138, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-ai:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-ai.loading {
+  background: rgba(123, 94, 138, 0.16);
+}
+
+.ai-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid transparent;
+  border-top-color: #b89cc8;
+  border-radius: 50%;
+  animation: aiSpin 0.7s linear infinite;
+}
+
+@keyframes aiSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .form-row { flex-direction: column; }
+  .add-task-form input,
+  .add-task-form select {
+    flex: 1 1 auto !important;
+    width: 100%;
+  }
+}

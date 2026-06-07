@@ -1,0 +1,19 @@
+.empty-state {
+  text-align: center;
+  padding: 64px 20px;
+  color: var(--ink-faint);
+}
+
+.empty-state .empty-icon {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+  display: block;
+  opacity: 0.6;
+  filter: grayscale(0.5);
+}
+
+.empty-state p {
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-light);
+}

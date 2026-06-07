@@ -1,0 +1,62 @@
+.stats-bar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  background: var(--paper-light);
+  border: 1px solid var(--grid);
+  border-radius: var(--radius-lg);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 顶部金色装饰线 */
+.stat-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 8px;
+  right: 8px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.4), transparent);
+}
+
+.stat-item:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md), 0 0 16px rgba(212, 168, 83, 0.1);
+  border-color: rgba(212, 168, 83, 0.3);
+}
+
+.stat-number {
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-family: "PingFang SC", "Hiragino Sans GB", "STKaiti", "KaiTi", "Noto Serif SC", serif;
+  color: var(--stamp-red);
+  line-height: 1;
+}
+
+.stat-number.done {
+  color: var(--stamp-gold);
+}
+
+.stat-label {
+  color: var(--ink-light);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .stats-bar { gap: 8px; }
+  .stat-item { padding: 8px 12px; font-size: 0.75rem; }
+  .stat-number { font-size: 1.3rem; }
+}

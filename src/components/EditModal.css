@@ -1,0 +1,90 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease);
+  backdrop-filter: blur(4px);
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal {
+  background: var(--paper-light);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(212, 168, 83, 0.1);
+  transform: translateY(20px);
+  transition: transform 0.3s var(--ease-spring);
+  max-height: 85vh;
+  overflow-y: auto;
+  border: 1px solid rgba(212, 168, 83, 0.25);
+}
+
+.modal-overlay.open .modal {
+  transform: translateY(0);
+}
+
+.modal h3 {
+  font-family: "PingFang SC", "Hiragino Sans GB", "STKaiti", "KaiTi", "Noto Serif SC", serif;
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+  color: var(--stamp-gold);
+  letter-spacing: 0.08em;
+}
+
+.modal .form-group {
+  margin-bottom: 14px;
+}
+
+.modal label {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--ink-light);
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+}
+
+.modal input,
+.modal select,
+.modal textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--grid);
+  border-radius: var(--radius);
+  background: var(--paper-dark);
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.modal input:focus,
+.modal select:focus,
+.modal textarea:focus {
+  border-color: var(--stamp-gold);
+  box-shadow: 0 0 8px rgba(212, 168, 83, 0.15);
+}
+
+.modal textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

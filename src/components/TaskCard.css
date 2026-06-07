@@ -1,0 +1,206 @@
+.task-card {
+  background: var(--paper-light);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--grid);
+  transition: all 0.3s var(--ease);
+  position: relative;
+  overflow: hidden;
+  animation: cardIn 0.35s var(--ease-spring) both;
+}
+
+/* 左侧锦缎色条 */
+.task-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--tape-color, var(--tape-yellow));
+}
+
+/* 金色微光装饰 */
+.task-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.3));
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+.task-card[data-category="工作"]::before { --tape-color: var(--tape-blue); }
+.task-card[data-category="个人"]::before { --tape-color: var(--tape-green); }
+.task-card[data-category="学习"]::before { --tape-color: var(--tape-yellow); }
+.task-card[data-category="生活"]::before { --tape-color: var(--tape-orange); }
+.task-card[data-category="健康"]::before { --tape-color: var(--tape-pink); }
+.task-card[data-category="其他"]::before { --tape-color: var(--tape-purple); }
+
+.task-card.removing {
+  animation: cardOut 0.35s ease-in forwards;
+  pointer-events: none;
+}
+
+.task-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--stamp-gold);
+  background: #2d261e;
+}
+.task-card:hover::after {
+  opacity: 1;
+}
+
+.task-card.completed {
+  opacity: 0.45;
+  filter: grayscale(0.4);
+}
+
+.task-card.completed .task-title {
+  text-decoration: line-through;
+  text-decoration-color: var(--ink-faint);
+  text-decoration-thickness: 1.5px;
+}
+
+.task-card.completed:hover {
+  opacity: 0.6;
+}
+
+/* Task body */
+.task-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.task-desc {
+  font-size: 0.78rem;
+  color: var(--ink-light);
+  margin-top: 4px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+  align-items: center;
+}
+
+/* Priority stamp — 江湖令牌风格 */
+.priority-stamp {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+  border: 1px solid;
+  font-family: "PingFang SC", "Hiragino Sans GB", "STKaiti", "KaiTi", "Noto Serif SC", serif;
+  display: inline-block;
+  clip-path: polygon(3px 0, 100% 0, calc(100% - 3px) 100%, 0 100%);
+}
+
+.priority-high {
+  color: #f0c0a0;
+  border-color: var(--stamp-red);
+  background: rgba(196, 58, 49, 0.15);
+}
+
+.priority-medium {
+  color: #d4b896;
+  border-color: var(--stamp-orange);
+  background: rgba(200, 132, 58, 0.12);
+}
+
+.priority-low {
+  color: #b8c8d8;
+  border-color: var(--stamp-blue);
+  background: rgba(91, 122, 154, 0.12);
+}
+
+/* Category tag — 锦缎布标 */
+.category-tag {
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+  position: relative;
+  color: var(--ink);
+  border: 1px solid rgba(212, 168, 83, 0.15);
+}
+
+.category-tag::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1px;
+  opacity: 0.25;
+  z-index: -1;
+}
+
+.category-工作::before { background: #5b7a9a; }
+.category-个人::before { background: #5d8a6e; }
+.category-学习::before { background: #d4a853; }
+.category-生活::before { background: #c8843a; }
+.category-健康::before { background: #c43a31; }
+.category-其他::before { background: #7b5e8a; }
+
+/* Due date */
+.due-date {
+  font-size: 0.72rem;
+  color: var(--ink-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.due-date.overdue {
+  color: var(--stamp-red);
+  font-weight: 600;
+}
+
+.due-date.today {
+  color: var(--stamp-gold);
+  font-weight: 500;
+}
+
+/* Task actions */
+.task-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.2s var(--ease);
+}
+
+.task-card:hover .task-actions {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .task-actions { opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .task-meta { gap: 4px; }
+  .priority-stamp { font-size: 0.6rem; padding: 1px 6px; }
+}

@@ -1,0 +1,33 @@
+.task-group {
+  margin-bottom: 24px;
+}
+
+.task-group-header {
+  font-family: "PingFang SC", "Hiragino Sans GB", "STKaiti", "KaiTi", "Noto Serif SC", serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--stamp-gold);
+  letter-spacing: 0.08em;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(212, 168, 83, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.group-count {
+  font-size: 0.7rem;
+  background: rgba(212, 168, 83, 0.1);
+  padding: 2px 8px;
+  border-radius: 2px;
+  color: var(--stamp-gold);
+  font-weight: 400;
+  border: 1px solid rgba(212, 168, 83, 0.15);
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
