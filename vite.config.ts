@@ -16,8 +16,8 @@ export default defineConfig({
         background_color: '#1a1a2e',
         display: 'standalone',
         orientation: 'portrait-primary',
-        start_url: '/todoapp/',
-        scope: '/todoapp/',
+        start_url: './',
+        scope: './',
         icons: [
           {
             src: 'icon.svg',
@@ -38,7 +38,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: '/todoapp/',
+  base: './',
   server: {
     host: true,
   },
