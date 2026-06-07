@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+    <linearGradient id="border" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e94560"/>
+      <stop offset="100%" stop-color="#c23152"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景圆角矩形 -->
+  <rect width="192" height="192" rx="32" fill="url(#bg)"/>
+  <rect x="4" y="4" width="184" height="184" rx="28" fill="none" stroke="url(#border)" stroke-width="2" opacity="0.4"/>
+
+  <!-- 装饰性云纹 -->
+  <g opacity="0.08" fill="white">
+    <circle cx="40" cy="40" r="30"/>
+    <circle cx="152" cy="152" r="30"/>
+    <circle cx="152" cy="40" r="15"/>
+    <circle cx="40" cy="152" r="15"/>
+  </g>
+
+  <!-- 交叉双剑 -->
+  <g transform="translate(96,82)">
+    <!-- 剑 1 -->
+    <g transform="rotate(-25)">
+      <rect x="-4" y="-35" width="8" height="50" rx="2" fill="#ddd" opacity="0.9"/>
+      <rect x="-4" y="-40" width="8" height="8" rx="1" fill="#e94560"/>
+      <rect x="-10" y="10" width="20" height="5" rx="2" fill="#aaa"/>
+    </g>
+    <!-- 剑 2 -->
+    <g transform="rotate(25)">
+      <rect x="-4" y="-35" width="8" height="50" rx="2" fill="#ddd" opacity="0.9"/>
+      <rect x="-4" y="-40" width="8" height="8" rx="1" fill="#e94560"/>
+      <rect x="-10" y="10" width="20" height="5" rx="2" fill="#aaa"/>
+    </g>
+  </g>
+
+  <!-- 标题 -->
+  <text x="96" y="138" text-anchor="middle" font-size="22" fill="#e94560" font-weight="bold" font-family="sans-serif">江湖任务录</text>
+
+  <!-- 底部装饰线 -->
+  <line x1="50" y1="152" x2="142" y2="152" stroke="#e94560" stroke-width="1" opacity="0.5"/>
+</svg>
