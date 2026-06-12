@@ -41,12 +41,6 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico}'],
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/api\.deepseek\.com\/.*/i,
-            handler: 'NetworkOnly',
-          },
-        ],
       },
     }),
   ],

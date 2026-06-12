@@ -24,7 +24,6 @@ const initialState: TaskState = {
 type TaskAction =
   | { type: 'INIT_TASKS'; payload: Task[] }
   | { type: 'ADD_TASK'; payload: TaskFormData }
-  | { type: 'BATCH_ADD_TASKS'; payload: TaskFormData[] }
   | { type: 'TOGGLE_TASK'; payload: string }
   | { type: 'UPDATE_TASK'; payload: { id: string; data: TaskFormData } }
   | { type: 'DELETE_TASK'; payload: string }
@@ -54,21 +53,6 @@ function taskReducer(state: TaskState, action: TaskAction): TaskState {
         completedAt: null,
       };
       return { ...state, tasks: [task, ...state.tasks] };
-    }
-
-    case 'BATCH_ADD_TASKS': {
-      const newTasks: Task[] = action.payload.map((data) => ({
-        id: uuid(),
-        title: data.title.trim(),
-        description: (data.description || '').trim(),
-        dueDate: data.dueDate || null,
-        priority: data.priority,
-        category: data.category,
-        completed: false,
-        createdAt: new Date().toISOString(),
-        completedAt: null,
-      }));
-      return { ...state, tasks: [...newTasks, ...state.tasks] };
     }
 
     case 'TOGGLE_TASK':

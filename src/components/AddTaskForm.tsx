@@ -2,7 +2,6 @@ import { useState, type FormEvent } from 'react';
 import type { Priority, Category, TaskFormData } from '../types/task';
 import { useTaskContext } from '../context/TaskContext';
 import { CATEGORIES, PRIORITIES } from '../constants';
-import { decomposeTask } from '../utils/deepseek';
 import './AddTaskForm.css';
 
 interface AddTaskFormProps {
@@ -17,7 +16,6 @@ export default function AddTaskForm({ onAdded }: AddTaskFormProps) {
   const [priority, setPriority] = useState<Priority>('medium');
   const [category, setCategory] = useState<Category>('其他');
   const [showExtra, setShowExtra] = useState(false);
-  const [aiLoading, setAiLoading] = useState(false);
 
   const resetForm = () => {
     setTitle('');
@@ -45,31 +43,6 @@ export default function AddTaskForm({ onAdded }: AddTaskFormProps) {
     resetForm();
   };
 
-  const handleAiDecompose = async () => {
-    const trimmedTitle = title.trim();
-    if (!trimmedTitle) {
-      onAdded('⚠️ 请先输入任务描述');
-      return;
-    }
-
-    setAiLoading(true);
-    try {
-      const subtasks = await decomposeTask(trimmedTitle);
-      if (subtasks.length === 0) {
-        onAdded('⚠️ AI 未能拆解出子任务，请尝试更具体的描述');
-        return;
-      }
-      dispatch({ type: 'BATCH_ADD_TASKS', payload: subtasks });
-      onAdded(`🤖 AI 已拆解为 ${subtasks.length} 个子任务`);
-      resetForm();
-    } catch (err) {
-      const message = err instanceof Error ? err.message : 'AI 拆解失败，请重试';
-      onAdded(`❌ ${message}`);
-    } finally {
-      setAiLoading(false);
-    }
-  };
-
   return (
     <form className="add-task-form" onSubmit={handleSubmit} autoComplete="off">
       <div className="form-row main-row">
@@ -82,22 +55,6 @@ export default function AddTaskForm({ onAdded }: AddTaskFormProps) {
           required
           maxLength={200}
         />
-        <button
-          type="button"
-          className={`btn btn-ai${aiLoading ? ' loading' : ''}`}
-          onClick={handleAiDecompose}
-          disabled={aiLoading}
-          title="AI 自动拆解为子任务"
-        >
-          {aiLoading ? (
-            <>
-              <span className="ai-spinner" />
-              拆解中…
-            </>
-          ) : (
-            '🤖 AI 拆解'
-          )}
-        </button>
         <input
           type="date"
           name="dueDate"
@@ -126,7 +83,7 @@ export default function AddTaskForm({ onAdded }: AddTaskFormProps) {
             </option>
           ))}
         </select>
-        <button type="submit" className="btn btn-primary" disabled={aiLoading}>
+        <button type="submit" className="btn btn-primary">
           ＋ 添加
         </button>
       </div>
