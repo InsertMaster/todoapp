@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <defs>
+    <linearGradient id="sword1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c0c0c0"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="sword2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#c0c0c0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 透明背景 - 安全圈参考线（不可见，仅作设计标记） -->
+  <!-- 安全圈: 半径 77px (40% of 192), 圆心 (96,96) -->
+
+  <!-- 交叉双剑（在安全圈内） -->
+  <g transform="translate(96,86)">
+    <!-- 剑 1 - 左斜 -->
+    <g transform="rotate(-28)">
+      <!-- 剑刃 -->
+      <rect x="-3.5" y="-38" width="7" height="56" rx="1.5" fill="url(#sword1)"/>
+      <!-- 剑尖装饰 -->
+      <rect x="-3.5" y="-42" width="7" height="6" rx="1" fill="#e94560"/>
+      <!-- 剑格（护手） -->
+      <rect x="-10" y="12" width="20" height="5" rx="2" fill="#e94560" opacity="0.8"/>
+      <!-- 剑柄 -->
+      <rect x="-3" y="17" width="6" height="16" rx="1.5" fill="#888"/>
+    </g>
+
+    <!-- 剑 2 - 右斜 -->
+    <g transform="rotate(28)">
+      <rect x="-3.5" y="-38" width="7" height="56" rx="1.5" fill="url(#sword2)"/>
+      <rect x="-3.5" y="-42" width="7" height="6" rx="1" fill="#e94560"/>
+      <rect x="-10" y="12" width="20" height="5" rx="2" fill="#e94560" opacity="0.8"/>
+      <rect x="-3" y="17" width="6" height="16" rx="1.5" fill="#888"/>
+    </g>
+  </g>
+
+  <!-- 标题（安全圈内，剑下方） -->
+  <text x="96" y="148" text-anchor="middle" font-size="18" fill="#e94560" font-weight="bold" font-family="sans-serif">江湖任务录</text>
+
+  <!-- 微小装饰点 -->
+  <circle cx="96" cy="162" r="1.5" fill="#e94560" opacity="0.5"/>
+</svg>

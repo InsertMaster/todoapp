@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>江湖任务录</title>
+  <script>
+    // SPA routing fix for GitHub Pages: redirect to index.html, preserving the path
+    const path = sessionStorage.getItem('redirect') || location.pathname.replace(/\/$/, '');
+    sessionStorage.setItem('redirect', path);
+    location.replace('./' + location.search);
+  </script>
+</head>
+<body></body>
+</html>
